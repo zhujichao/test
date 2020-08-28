@@ -1,0 +1,9 @@
+
+spring:
+  cloud:
+    config:
+      uri: http://${host:localhost}:9020
+      name: config
+      profile: ${active:dev}
+      # service2 我们采用prod的配置文件
+      # profile: ${active:prod}

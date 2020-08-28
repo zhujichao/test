@@ -1,0 +1,5 @@
+registry:
+  url: http://${host:localhost}:9010/eureka/
+
+# 测试属性
+isDebug: false

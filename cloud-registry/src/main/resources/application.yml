@@ -1,0 +1,15 @@
+server:
+  port: 9010 #端口
+
+eureka:
+  server:
+    enable-self-preservation: false  # 设为false，关闭自我保护，会清理无效节点
+    eviction-interval-timer-in-ms: 30000  # 清理无效节点间隔时间（单位毫秒，默认是60*1000）
+  instance:
+    hostname: 127.0.0.1
+    preferIpAddress: true
+  client:
+    registerWithEureka: false #注册中心，无需注册自己
+    fetchRegistry: false
+    serviceUrl: #演示调用的配置
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

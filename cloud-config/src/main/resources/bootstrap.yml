@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: cloud.config
+  profiles:
+    #native表示本地方式
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          # 配置文件存放路径
+          search-locations: classpath:/config/

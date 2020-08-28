@@ -1,0 +1,7 @@
+
+spring:
+  cloud:
+    config:
+      uri: http://${host:localhost}:9020
+      name: config
+      profile: ${active:dev}

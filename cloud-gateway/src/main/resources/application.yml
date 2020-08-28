@@ -1,0 +1,36 @@
+server:
+  port: 9030
+
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      # 不配置routes，则默认使用服务名
+      routes:
+        - id: service1
+          uri: lb://service1
+          predicates:
+            - Path=/s1/**
+          filters:
+            - StripPrefix=1
+        - id: service2
+          uri: lb://service2
+          predicates:
+            - Path=/s2/**
+          filters:
+            - StripPrefix=1
+eureka:
+  client:
+    service-url:
+      defaultZone: ${registry.url}
+logging:
+  level:
+    org.springframework.cloud.gateway: trace
+    org.springframework.http.server.reactive: debug
+    org.springframework.web.reactive: debug
+    reactor.ipc.netty: debug

@@ -1,0 +1,17 @@
+
+server:
+  port: 9040
+
+spring:
+  application:
+    name: service1
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${registry.url}
+  instance:
+    lease-expiration-duration-in-seconds: 60
+    lease-renewal-interval-in-seconds: 30
+    preferIpAddress: true
+    instanceId: ${spring.cloud.client.ip-address}:${server.port}
